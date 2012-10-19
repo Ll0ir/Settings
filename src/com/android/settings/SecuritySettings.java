@@ -79,11 +79,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String MENU_UNLOCK_PREF = "menu_unlock";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String KEY_LOCK_BEFORE_UNLOCK = "lock_before_unlock";
-<<<<<<< HEAD
     private static final String LOCK_SYNC_ENCRYPTION_PASSWORD = "lock_sync_encryption_password";
-=======
     private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
->>>>>>> d77758449b78055b813d80441c443e6c08a3804a
     public static final String KEY_VIBRATE_PREF = "lockscreen_vibrate";
 
     DevicePolicyManager mDPM;
