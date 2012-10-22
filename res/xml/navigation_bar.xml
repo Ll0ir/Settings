@@ -33,12 +33,12 @@
         android:title="@string/hw_keys_title">
 
        <CheckBoxPreference
-            android:key="key_Power_enabled"
+            android:key="key_power_enabled"
             android:title="@string/key_power_enabled"
             android:defaultValue="true" />
 
        <CheckBoxPreference
-            android:key="key_Search_enabled"
+            android:key="key_search_enabled"
             android:title="@string/key_search_enabled"
             android:defaultValue="true" />
 
