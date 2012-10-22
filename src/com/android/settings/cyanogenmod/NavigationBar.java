@@ -36,13 +36,13 @@ import com.android.settings.SettingsPreferenceFragment;
 public class NavigationBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String NAVIGATION_BAR_SHOW = "navigation_bar_show";
-    private static final String KEY_MENU_ENABLED = "key_menu_enabled";
-    private static final String KEY_BACK_ENABLED = "key_back_enabled";
+    private static final String KEY_POWER_ENABLED = "key_power_enabled";
+    private static final String KEY_SEARCH_ENABLED = "key_search_enabled";
     private static final String KEY_HOME_ENABLED = "key_home_enabled";
 
     private CheckBoxPreference mNavigationBarShow;
-    private CheckBoxPreference mMenuKeyEnabled;
-    private CheckBoxPreference mBackKeyEnabled;
+    private CheckBoxPreference mPowerKeyEnabled;
+    private CheckBoxPreference mSearchKeyEnabled;
     private CheckBoxPreference mHomeKeyEnabled;
 
     private boolean mHasNavigationBar;
@@ -64,8 +64,8 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         PreferenceScreen prefSet = getPreferenceScreen();
 
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAVIGATION_BAR_SHOW);
-        mMenuKeyEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_MENU_ENABLED);
-        mBackKeyEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_BACK_ENABLED);
+        mPowerKeyEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_POWER_ENABLED);
+        mSearchKeyEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_SEARCH_ENABLED);
         mHomeKeyEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_HOME_ENABLED);
 
         mNavigationBarShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -78,26 +78,26 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
     }
 
     public void enableKeysPrefs() {
-        mMenuKeyEnabled.setEnabled(true);
-        mBackKeyEnabled.setEnabled(true);
+        mPowerKeyEnabled.setEnabled(true);
+        mSearchKeyEnabled.setEnabled(true);
         mHomeKeyEnabled.setEnabled(true);
-        mMenuKeyEnabled.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.KEY_MENU_ENABLED, 1) == 1));
-        mBackKeyEnabled.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.KEY_BACK_ENABLED, 1) == 1));
+        mPowerKeyEnabled.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.KEY_POWER_ENABLED, 1) == 1));
+        mSearchKeyEnabled.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.KEY_SEARCH_ENABLED, 1) == 1));
         mHomeKeyEnabled.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.KEY_HOME_ENABLED, 1) == 1));
     }
 
     public void resetKeys() {
-        mMenuKeyEnabled.setEnabled(false);
-        mBackKeyEnabled.setEnabled(false);
+        mPowerKeyEnabled.setEnabled(false);
+        mSearchKeyEnabled.setEnabled(false);
         mHomeKeyEnabled.setEnabled(false);
-        mMenuKeyEnabled.setChecked(true);
-        mBackKeyEnabled.setChecked(true);
+        mPowerKeyEnabled.setChecked(true);
+        mSearchKeyEnabled.setChecked(true);
         mHomeKeyEnabled.setChecked(true);
-        Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.KEY_MENU_ENABLED, 1);
-        Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.KEY_BACK_ENABLED, 1);
+        Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.KEY_POWER_ENABLED, 1);
+        Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.KEY_SEARCH_ENABLED, 1);
         Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.KEY_HOME_ENABLED, 1);
     }
 
@@ -122,15 +122,15 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
                  toast.show();
              }
             return true;
-        } else if (preference == mMenuKeyEnabled) {
-            value = mMenuKeyEnabled.isChecked();
+        } else if (preference == mPowerKeyEnabled) {
+            value = mPowerKeyEnabled.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.KEY_MENU_ENABLED, value ? 1 : 0);
+                    Settings.System.KEY_POWER_ENABLED, value ? 1 : 0);
             return true;
-        } else if (preference == mBackKeyEnabled) {
-            value = mBackKeyEnabled.isChecked();
+        } else if (preference == mSearchKeyEnabled) {
+            value = mSearchKeyEnabled.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.KEY_BACK_ENABLED, value ? 1 : 0);
+                    Settings.System.KEY_SEARCH_ENABLED, value ? 1 : 0);
             return true;
         } else if (preference == mHomeKeyEnabled) {
             value = mHomeKeyEnabled.isChecked();
